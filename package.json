@@ -1,0 +1,20 @@
+{
+  "name": "vfFieldStatus",
+  "version": "1.0.0",
+  "description": "Status of Valley Flyers field based on iata data",
+  "main": "index.js",
+  "author": "Travis Ballard <travis.ballard@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "scripts": {
+    "build": "webpack --build",
+    "watch": "webpack --watch"
+  }
+}
