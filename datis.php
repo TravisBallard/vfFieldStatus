@@ -21,6 +21,5 @@
     $result = curl_exec($ch);
 
     header('Content-Type: application/json');
-    header('Access-Control-Allow-Origin: *');
     print $result;
   }

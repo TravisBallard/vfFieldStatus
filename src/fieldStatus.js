@@ -7,7 +7,7 @@
    */
   const getData = async () => {
     try {
-      return await fetch('datis.php?iata=kvny')
+      return await fetch('http://travisballard.com/datis.php?iata=kvny')
         .then(response => response.ok ? response.json() : {})
     } catch (e) {
       console.error(e)
