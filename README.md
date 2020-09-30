@@ -13,10 +13,13 @@ Build vf.status.js
 
 
 ### Usage:
-  include vf.status.js in your html
+  host it yourself and include the compiled vf.status.js in your html
   - `<script type="text/javascript" src="dist/vf.status.js"></script>`
   
-  view `index.html` after building for a working example
+  OR include the version hosted on my website: 
+  - `<script type="text/javascript" src="http://travisballard.com/vfFieldStatus/dist/vf.status.js"></script>`
+  
+  [View A Demo](http://travisballard.com/vfFieldStatus/) or view `index.html` after building for a working example
  
 
   
