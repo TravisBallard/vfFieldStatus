@@ -15,6 +15,8 @@ Build vf.status.js
 ### Usage:
   include vf.status.js in your html
   - `<script type="text/javascript" src="dist/vf.status.js"></script>`
+  
+  view `index.html` after building for a working example
  
 
   
