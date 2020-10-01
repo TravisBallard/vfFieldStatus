@@ -4,6 +4,7 @@ import '../sass/style.sass'
   const FIELD_CLOSED = 34; // field is closed if this runway is active.
   const FLYMSG = 'OPEN - Fly all you like (below 250ft)'
   const NOFLYMSG = 'CLOSED - DO NOT FLY'
+  const NORWYMSG = 'Unable to determine active runway at VNY.'
 
 
   /**
@@ -46,11 +47,20 @@ import '../sass/style.sass'
   getData().then(data => {
     if (data.length > 0) {
       const {datis} = data[0]
-      const [full, runway] = datis.match(/LNDG AND DEPG RWY (\d+)/)
-      if (parseInt(runway) === FIELD_CLOSED) {
-        showNotification(NOFLYMSG, 'closed')
+      const matches = datis.match(/LNDG AND DEPG RWY (\d+)/)
+
+      if (matches) {
+        const [full, runway] = matches
+        if (runway) {
+          if (parseInt(runway) === FIELD_CLOSED) {
+            showNotification(NOFLYMSG, 'closed')
+          } else {
+            showNotification(FLYMSG, 'open')
+          }
+        }
       } else {
-        showNotification(FLYMSG, 'open')
+        showNotification(datis, 'datis')
+        showNotification(NORWYMSG, 'closed')
       }
     }
   })
