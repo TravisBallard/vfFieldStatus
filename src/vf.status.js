@@ -6,8 +6,9 @@
    * @returns {Promise<Response>}
    */
   const getData = async () => {
+    const d = new Date()
     try {
-      return await fetch('http://travisballard.com/datis.php?iata=kvny')
+      return await fetch('http://travisballard.com/datis.php?iata=kvny&c=' + d.toISOString())
         .then(response => response.ok ? response.json() : {})
     } catch (e) {
       console.error(e)

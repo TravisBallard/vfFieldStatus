@@ -1,10 +1,6 @@
-const path = require('path');
-
 module.exports = {
-  entry: './src/fieldStatus.js',
+  entry: {
+    'vf.status': './src/vf.status.js',
+  },
   mode: 'production',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'vf.status.js'
-  }
-};
+}
