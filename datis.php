@@ -16,9 +16,7 @@
   if (!$iata) {
     http_response_code(400);
   } else  {
-    $url = 'https://datis.clowd.io/api/' . $iata . '?c=' . time();
-
-    $ch = curl_init($url);
+    $ch = curl_init(sprintf('https://datis.clowd.io/api/%s?c=%d', $iata , time()));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $result = curl_exec($ch);
 
