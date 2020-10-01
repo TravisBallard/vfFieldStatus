@@ -16,10 +16,11 @@
   if (!$iata) {
     http_response_code(400);
   } else  {
-    $ch = curl_init('https://datis.clowd.io/api/' . $iata);
+    $ch = curl_init('https://datis.clowd.io/api/' . $iata . '&c=' . time());
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $result = curl_exec($ch);
 
     header('Content-Type: application/json');
+    header('Cache-Control: no-store');
     print $result;
   }
