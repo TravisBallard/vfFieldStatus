@@ -1,0 +1,20 @@
+$openBG: #b5ed90;
+$openFG: #40a000;
+$closedBG: #ffb2bd;
+$closedFG: #a00018;
+
+.vfFieldStatus
+  padding: 10px;
+  font-size: inherit;
+  display: inline-block;
+  text-shadow: 1px 1px 1px #fff;
+
+  &.open
+    border: 1px solid $openFG;
+    background-color: $openBG;
+    color: $openFG;
+
+  &.closed
+    border: 1px solid $closedFG;
+    background-color: $closedBG;
+    color: $closedFG;
