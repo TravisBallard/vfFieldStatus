@@ -6,7 +6,6 @@ import '../sass/style.sass'
   const NOFLYMSG = 'CLOSED - DO NOT FLY'
   const NORWYMSG = 'Unable to determine active runway at VNY. Fly with caution.'
 
-
   /**
    * Get data from API
    * @returns {Promise<Response>}
@@ -14,7 +13,7 @@ import '../sass/style.sass'
   const getData = async () => {
     const d = new Date()
     try {
-      return await fetch('http://travisballard.com/datis.php?iata=kvny&c=' + d.toISOString())
+      return await fetch('http://travisballard.com/vfFieldStatus/datis.php?iata=kvny&c=' + d.toISOString())
         .then(response => response.ok ? response.json() : {})
     } catch (e) {
       console.error(e)
