@@ -1,38 +1,37 @@
 <?php
 
-  /**
-   * Proxy for https://datis.clowd.io/api/ that has CORS headers
-   */
+/**
+ * Proxy for https://datis.clowd.io/api/ that has CORS headers
+ */
 
-  if (empty($_REQUEST['iata'])) {
-    http_response_code(400);
-    die();
+if (empty($_REQUEST['iata'])) {
+  http_response_code(400);
+  die();
+}
+
+$iata = filter_var($_REQUEST['iata'], FILTER_VALIDATE_REGEXP, array('options' => array(
+  'regexp' => '/^([A-z]+)$/'
+)));
+
+if (!$iata) {
+  http_response_code(400);
+  die();
+}
+
+$ch = curl_init(sprintf('https://datis.clowd.io/api/%s?c=%d', $iata , time()));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$result = curl_exec($ch);
+
+$headers = [
+  'Content-Type: application/json',
+  'Cache-Control: no-store',
+  'Access-Control-Allow-Origin: *',
+];
+
+foreach ($headers as $header) {
+  if (!in_array($header, headers_list())) {
+    header($header);
   }
+}
 
-  $iata = filter_var($_REQUEST['iata'], FILTER_VALIDATE_REGEXP, array('options' => array(
-    'regexp' => '/^([A-z]+)$/'
-  )));
-
-  if (!$iata) {
-    http_response_code(400);
-    die();
-  }
-
-  $ch = curl_init(sprintf('https://datis.clowd.io/api/%s?c=%d', $iata , time()));
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  $result = curl_exec($ch);
-
-  $allHeaders = headers_list();
-  $newHeaders = [
-    'Content-Type: application/json',
-    'Access-Control-Allow-Origin: *',
-    'Cache-Control: no-store',
-  ];
-
-  foreach ($newHeaders as $header) {
-    if (!in_array($header, $allHeaders)) {
-      header($header);
-    }
-  }
-
-  print $result;
+print $result;
