@@ -2,6 +2,8 @@ $openBG: #b5ed90
 $openFG: #40a000
 $closedBG: #ffb2bd
 $closedFG: #a00018
+$noRnwyBG: #fff9b7
+$noRnwyFG: #777020
 
 .vfFieldStatus
   padding: 10px
@@ -18,6 +20,11 @@ $closedFG: #a00018
     border: 1px solid $closedFG
     background-color: $closedBG
     color: $closedFG
+
+  &.no-runway-data
+    border: 1px solid $noRnwyFG
+    background-color: $noRnwyBG
+    color: $noRnwyFG
 
   &.datis
     border: 1px solid #dfdfdf
