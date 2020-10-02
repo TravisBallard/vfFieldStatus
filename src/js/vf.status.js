@@ -4,7 +4,7 @@ import '../sass/style.sass'
   const FIELD_CLOSED = 34; // field is closed if this runway is active.
   const FLYMSG = 'OPEN - Fly all you like (below 250ft)'
   const NOFLYMSG = 'CLOSED - DO NOT FLY'
-  const NORWYMSG = 'Unable to determine active runway at VNY.'
+  const NORWYMSG = 'Unable to determine active runway at VNY. Fly with caution.'
 
 
   /**
@@ -24,8 +24,7 @@ import '../sass/style.sass'
   /**
    * Ouput a message to the page.
    * @param text
-   * @param color
-   * @param bgColor
+   * @param className
    */
   const showNotification = (text, className) => {
     const wrapper = document.createElement('div')
@@ -60,7 +59,7 @@ import '../sass/style.sass'
         }
       } else {
         showNotification(datis, 'datis')
-        showNotification(NORWYMSG, 'closed')
+        showNotification(NORWYMSG, 'no-runway-data')
       }
     }
   })
